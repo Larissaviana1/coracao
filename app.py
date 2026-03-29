@@ -34,11 +34,10 @@ st.markdown("""
 # Título rosa com coração
 st.markdown('<div class="title"> Para você 🌹</div>', unsafe_allow_html=True)
 
-# Coração feito de emojis
+# Coração corrigido (mesma quantidade de emojis, melhor alinhado)
 heart_pattern = [
-"  ❤️            ❤️  ",  # ← aqui agora tem dois espaços extras
-" ❤️❤️❤️ ❤️❤️❤️ ",
-" ❤️❤️❤️❤️❤️❤️❤️ ",
+"   ❤️❤️  ❤️❤️   ",
+"  ❤️❤️❤️❤️❤️❤️  ",
 "  ❤️❤️❤️❤️❤️❤️  ",
 "   ❤️❤️❤️❤️❤️   ",
 "    ❤️❤️❤️❤️    ",
