@@ -26,9 +26,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Título
-st.markdown('<div class="title"> Para você 🌹</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">Para você 🌹</div>', unsafe_allow_html=True)
 
-# Estrutura do coração
+# Coração base
 heart_pattern = [
 "    ❤️❤️ ❤️❤️    ",
 "   ❤️❤️❤️❤️❤️❤️   ",
@@ -40,28 +40,23 @@ heart_pattern = [
 "        ❤️        "
 ]
 
-# Placeholder para animação
+# Placeholder único
 placeholder = st.empty()
 
-# Construção animada
-current_lines = [" " * len(line) for line in heart_pattern]
+# Lista vazia inicial
+current = [" " * len(line) for line in heart_pattern]
 
-for i, line in enumerate(heart_pattern):
-    new_line = list(current_lines[i])
-
-    for j, char in enumerate(line):
-        if char == "❤️":
-            new_line[j] = "❤️"
-            current_lines[i] = "".join(new_line)
+# Animação
+for i in range(len(heart_pattern)):
+    for j in range(len(heart_pattern[i])):
+        if heart_pattern[i][j] == "❤️":
+            linha = list(current[i])
+            linha[j] = "❤️"
+            current[i] = "".join(linha)
 
             placeholder.markdown(
-                '<div class="heart">' + "<br>".join(current_lines) + '</div>',
+                "<div class='heart'>" + "<br>".join(current) + "</div>",
                 unsafe_allow_html=True
             )
 
-            time.sleep(0.05)  # velocidade da animação
-
-        else:
-            new_line[j] = " "
-
-    current_lines[i] = "".join(new_line)
+            time.sleep(0.04)
