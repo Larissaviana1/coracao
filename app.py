@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.set_page_config(page_title="Para Você ❤️", layout="centered")
 
@@ -10,7 +11,7 @@ st.markdown("""
     }
     .title {
         text-align: center;
-        font-size: 32px;  /* ↓ diminuí aqui */
+        font-size: 32px;
         color: #ff4da6;
         margin-top: 60px;
         font-weight: bold;
@@ -20,21 +21,14 @@ st.markdown("""
         font-size: 22px;
         line-height: 22px;
         margin-top: 80px;
-        animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.12); }
-        100% { transform: scale(1); }
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Título menor
+# Título
 st.markdown('<div class="title"> Para você 🌹</div>', unsafe_allow_html=True)
 
-# Coração
+# Estrutura do coração
 heart_pattern = [
 "    ❤️❤️ ❤️❤️    ",
 "   ❤️❤️❤️❤️❤️❤️   ",
@@ -46,7 +40,28 @@ heart_pattern = [
 "        ❤️        "
 ]
 
-st.markdown(
-    '<div class="heart">' + "<br>".join(heart_pattern) + '</div>',
-    unsafe_allow_html=True
-)
+# Placeholder para animação
+placeholder = st.empty()
+
+# Construção animada
+current_lines = [" " * len(line) for line in heart_pattern]
+
+for i, line in enumerate(heart_pattern):
+    new_line = list(current_lines[i])
+
+    for j, char in enumerate(line):
+        if char == "❤️":
+            new_line[j] = "❤️"
+            current_lines[i] = "".join(new_line)
+
+            placeholder.markdown(
+                '<div class="heart">' + "<br>".join(current_lines) + '</div>',
+                unsafe_allow_html=True
+            )
+
+            time.sleep(0.05)  # velocidade da animação
+
+        else:
+            new_line[j] = " "
+
+    current_lines[i] = "".join(new_line)
