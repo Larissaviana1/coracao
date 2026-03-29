@@ -10,7 +10,7 @@ st.markdown("""
     }
     .title {
         text-align: center;
-        font-size: 55px;
+        font-size: 32px;  /* ↓ diminuí aqui */
         color: #ff4da6;
         margin-top: 60px;
         font-weight: bold;
@@ -31,10 +31,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Título rosa com coração
+# Título menor
 st.markdown('<div class="title"> Para você 🌹</div>', unsafe_allow_html=True)
 
-# Coração com topo mais pontiagudo
+# Coração
 heart_pattern = [
 "    ❤️❤️ ❤️❤️    ",
 "   ❤️❤️❤️❤️❤️❤️   ",
@@ -46,7 +46,6 @@ heart_pattern = [
 "        ❤️        "
 ]
 
-# Mostrar coração
 st.markdown(
     '<div class="heart">' + "<br>".join(heart_pattern) + '</div>',
     unsafe_allow_html=True
