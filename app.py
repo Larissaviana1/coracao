@@ -32,7 +32,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Título rosa com coração
-st.markdown('<div class="title">💖 Para você 💖</div>', unsafe_allow_html=True)
+st.markdown('<div class="title"> Para você 💖</div>', unsafe_allow_html=True)
 
 # Coração feito de emojis
 heart_pattern = [
