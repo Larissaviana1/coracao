@@ -36,7 +36,7 @@ st.markdown('<div class="title"> Para você 🌹</div>', unsafe_allow_html=True)
 
 # Coração feito de emojis
 heart_pattern = [
-"  ❤️❤️    ❤️❤️  ",  # ← aqui agora tem dois espaços extras
+"  ❤️❤️      ❤️❤️  ",  # ← aqui agora tem dois espaços extras
 " ❤️❤️❤️ ❤️❤️❤️ ",
 " ❤️❤️❤️❤️❤️❤️❤️ ",
 "  ❤️❤️❤️❤️❤️❤️  ",
