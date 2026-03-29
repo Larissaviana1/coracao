@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.set_page_config(page_title="Para Você ❤️", layout="centered")
 
@@ -10,7 +11,7 @@ st.markdown("""
     }
     .title {
         text-align: center;
-        font-size: 32px;  /* ↓ diminuí aqui */
+        font-size: 32px;
         color: #ff4da6;
         margin-top: 60px;
         font-weight: bold;
@@ -20,33 +21,62 @@ st.markdown("""
         font-size: 22px;
         line-height: 22px;
         margin-top: 80px;
-        animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.12); }
-        100% { transform: scale(1); }
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Título menor
-st.markdown('<div class="title"> Para você 🌹</div>', unsafe_allow_html=True)
+# Título
+st.markdown('<div class="title">Para você 🌹</div>', unsafe_allow_html=True)
 
-# Coração
+# Formato do coração (usando placeholders)
 heart_pattern = [
-"    ❤️❤️ ❤️❤️    ",
-"   ❤️❤️❤️❤️❤️❤️   ",
-"   ❤️❤️❤️❤️❤️❤️   ",
-"    ❤️❤️❤️❤️❤️    ",
-"     ❤️❤️❤️❤️     ",
-"      ❤️❤️❤️      ",
-"       ❤️❤️       ",
-"        ❤️        "
+"    xx xx    ",
+"   xxxxxx   ",
+"   xxxxxx   ",
+"    xxxxx    ",
+"     xxxx     ",
+"      xxx      ",
+"       xx       ",
+"        x        "
 ]
 
-st.markdown(
-    '<div class="heart">' + "<br>".join(heart_pattern) + '</div>',
-    unsafe_allow_html=True
-)
+# Placeholder pra atualizar
+placeholder = st.empty()
+
+# Função para renderizar
+def render_heart(step, color="white"):
+    rendered = []
+    count = 0
+
+    for row in heart_pattern:
+        new_row = ""
+        for char in row:
+            if char == "x":
+                if count < step:
+                    heart = "🤍" if color == "white" else "❤️"
+                    new_row += heart
+                else:
+                    new_row += " "
+                count += 1
+            else:
+                new_row += " "
+        rendered.append(new_row)
+
+    placeholder.markdown(
+        '<div class="heart">' + "<br>".join(rendered) + '</div>',
+        unsafe_allow_html=True
+    )
+
+# Contar total de corações
+total_hearts = sum(row.count("x") for row in heart_pattern)
+
+# 1. Aparecendo aos poucos em branco
+for i in range(total_hearts + 1):
+    render_heart(i, color="white")
+    time.sleep(0.15)
+
+# 2. Espera um pouquinho
+time.sleep(0.5)
+
+# 3. Todos ficam vermelhos
+render_heart(total_hearts, color="red")
