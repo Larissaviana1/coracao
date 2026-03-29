@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Você ❤️", layout="centered")
 
-# CSS fundo preto
+# CSS
 st.markdown("""
     <style>
     .stApp {
@@ -10,9 +10,9 @@ st.markdown("""
     }
     .title {
         text-align: center;
-        font-size: 50px;
-        color: white;
-        margin-top: 50px;
+        font-size: 55px;
+        color: #ff4da6;
+        margin-top: 60px;
         font-weight: bold;
     }
     .heart {
@@ -25,20 +25,20 @@ st.markdown("""
 
     @keyframes pulse {
         0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
+        50% { transform: scale(1.12); }
         100% { transform: scale(1); }
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Título
-st.markdown('<div class="title">para você</div>', unsafe_allow_html=True)
+# Título rosa com coração
+st.markdown('<div class="title">💖 Para você 💖</div>', unsafe_allow_html=True)
 
-# Desenho do coração com emojis
+# Coração feito de emojis
 heart_pattern = [
-"    ❤️     ❤️  ",
+"  ❤️❤️   ❤️❤️  ",
 " ❤️❤️❤️ ❤️❤️❤️ ",
-"❤️❤️❤️❤️❤️❤️❤️ ",
+" ❤️❤️❤️❤️❤️❤️❤️ ",
 "  ❤️❤️❤️❤️❤️❤️  ",
 "   ❤️❤️❤️❤️❤️   ",
 "    ❤️❤️❤️❤️    ",
